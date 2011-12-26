@@ -1,6 +1,6 @@
 from django.conf.urls import *
 from django.conf import settings
-from django.contrib import admin
+#from django.contrib import admin
 from django.conf.urls.static import static
 from django.views.generic import RedirectView 
 from django.contrib.admin.views.decorators import staff_member_required
@@ -13,7 +13,7 @@ from users.admin import SubscribedList
 
 from api import api_router
 
-admin.autodiscover()
+#admin.autodiscover()
 
 
 urlpatterns = patterns('',
@@ -33,7 +33,7 @@ urlpatterns = patterns('',
 
     (r'^admin$', RedirectView.as_view(url='/admin/')),
     (r'^admin/subscribers/$', staff_member_required(SubscribedList.as_view())),
-    (r'^admin/', include(admin.site.urls)),
+#    (r'^admin/', include(admin.site.urls)),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # This should only happen if you're using the local dev server with
