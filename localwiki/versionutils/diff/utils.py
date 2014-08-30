@@ -1,7 +1,7 @@
 from django.utils.functional import lazy
 from django.core.urlresolvers import reverse
 
-from staticfiles.storage import staticfiles_storage
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 
 def static_url(path):
