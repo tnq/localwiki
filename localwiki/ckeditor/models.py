@@ -161,7 +161,12 @@ def sanitize_html_fragment(unsafe, allowed_elements=[],
         tokenizer=tokenizer,
         namespaceHTMLElements=False
     )
-    top_level_elements = p.parseFragment(unsafe, encoding=encoding)
+    if isinstance(unsafe, unicode):
+        # Do not try to double-decode the incoming string.
+        de_encoding = None
+    else:
+        de_encoding = encoding
+    top_level_elements = p.parseFragment(unsafe, encoding=de_encoding)
     # put top level elements in container
     container = etree.Element('div')
     if top_level_elements and not hasattr(top_level_elements[0], 'tag'):
